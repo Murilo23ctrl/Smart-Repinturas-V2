@@ -1,0 +1,26 @@
+/* ===========================================================
+   SMART REPINTURA — ANIMATIONS.CSS
+   Classes controladas via Intersection Observer (scroll.js)
+=========================================================== */
+
+/* entrada suave; o atraso em cascata (--d) é aplicado pelo scroll.js nas grades.
+   Depois da entrada o scroll.js remove estas classes, e cada card volta a usar
+   as próprias transições de hover (rápidas, sem o atraso da cascata). */
+.reveal-up{
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity .8s var(--ease) var(--d, 0s), transform .8s var(--ease) var(--d, 0s);
+}
+.reveal-up.in-view{
+  opacity:1;
+  transform:translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{
+    animation-duration:.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;
+    scroll-behavior:auto !important;
+  }
+}

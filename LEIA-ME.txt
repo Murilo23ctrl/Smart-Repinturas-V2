@@ -1,0 +1,102 @@
+SMART REPINTURA — SITE INSTITUCIONAL
+========================================
+
+COMO ABRIR
+----------
+Abra o arquivo "index.html" no navegador. Para ver exatamente como no ar,
+sirva a pasta com um servidor local (ex.: extensão "Live Server" do VS Code).
+Nenhum framework é usado: HTML5, CSS3 e JavaScript puro.
+
+
+SEÇÕES DA PÁGINA (e o link de cada uma)
+----------------------------------------
+  #topo           01 Hero ("Especialistas em Repintura Automotiva")
+  #diferenciais   02 Faixa de diferenciais
+  #produtos       03 Produtos (roda giratória com as 8 categorias)
+  #sobre          04 Soluções Smart ("Muito mais que uma loja de tintas")
+  #servicos       04 cards de serviços (#suporte, #consultoria, #cabines, #laboratorios)
+  #colorimetria   05 Smart Color (processo de cor em 6 etapas)
+  #treinamentos   06 Smart Academy
+  #conteudos      07 Vídeos / dicas técnicas
+  #marcas         08 Marcas que trabalhamos
+  #clientes       09 Prova social (OCULTA até receber conteúdo real — ver abaixo)
+  #contato        Contato (formulário → WhatsApp + mapa)
+  #fale-conosco   10 CTA final
+
+
+FOTOS PENDENTES (é só colocar o arquivo com o nome exato)
+----------------------------------------------------------
+Enquanto o arquivo não existe, o site mostra um ícone ou uma imagem provisória.
+Assim que o arquivo é colocado na pasta, a foto aparece sozinha — sem mexer no código.
+
+  Categorias de produtos — pasta assets/images/produtos/  (JPG, 800 x 600 px)
+    abrasivos.jpg              (hoje: ícone)
+    mascaramento.jpg           (hoje: ícone)
+    preparacao.jpg             (hoje: foto da lata de massa)
+    tintas-automotivas.jpg     (hoje: foto da lata de PU)
+    vernizes-acabamento.jpg    (hoje: foto da lata de verniz)
+    polimento.jpg              (hoje: ícone)
+    pistolas-equipamentos.jpg  (hoje: pistola provisória)
+    epi-seguranca.jpg          (hoje: ícone)
+
+  Smart Color — pasta assets/images/  (JPG, 1000 x 1000 px)
+    colorimetria-espectrofotometro.jpg
+    (ideal: espectrofotômetro sendo usado sobre um veículo)
+
+  Marcas — pasta assets/images/marcas/  (PNG com fundo transparente, ~300 x 120 px)
+    autoluks.png  mirka.png  itaqua.png  adere.png
+    adelbras.png  norton.png  maxi-rubber.png  autoamerica.png
+    (enquanto não existem, aparece o nome da marca)
+
+Dica de desempenho: exporte as fotos já no tamanho indicado e comprimidas
+(ex.: squoosh.app). Se usar .webp, troque também a extensão no index.html.
+
+
+VÍDEOS DO YOUTUBE (seção Conteúdos)
+-----------------------------------
+Em cada card de vídeo do index.html, preencha data-video-id="" com o código do vídeo.
+Ex.: em youtube.com/watch?v=AbC123xYz o código é AbC123xYz.
+A capa e o link do vídeo aparecem sozinhos.
+
+ATENÇÃO: os links do canal ainda apontam para "https://youtube.com" (genérico).
+Troque pelo endereço do canal da Smart (localizar e substituir "https://youtube.com").
+
+
+PROVA SOCIAL (#clientes)
+------------------------
+A seção está pronta, mas oculta. Use SOMENTE depoimentos, cases e fotos reais.
+Para ativar: no index.html, apague o atributo  hidden  da <section id="clientes">
+e troque os textos entre [colchetes]. Fotos de antes/depois: assets/images/clientes/
+
+
+WHATSAPP
+--------
+Número principal dos botões: (16) 99708-5857  →  5516997085857
+Segundo número (Contato e rodapé): (16) 99785-0858  →  5516997850858
+Para trocar o número principal: localizar e substituir "5516997085857"
+no index.html e no js/script.js.
+
+
+DADOS PARA CONFERIR
+-------------------
+- Horário: "7:30 às 17:18" (veio assim no briefing — confirme se é 17:18 mesmo).
+- Endereço do site: as tags de SEO/compartilhamento usam
+  https://murilo23ctrl.github.io/Smart-Repinturas/ — se mudar para domínio próprio,
+  troque esse endereço no <head> do index.html.
+
+
+ESTRUTURA DE ARQUIVOS
+---------------------
+index.html
+css/
+  style.css        → cores, tipografia e todos os componentes
+  responsive.css   → header e ajustes por tamanho de tela
+  animations.css   → entrada suave dos elementos ao rolar
+js/
+  scroll.js        → header ao rolar, animações de entrada, item ativo do menu
+  slider.js        → carrossel do hero, roda de produtos, trilho de vídeos
+  script.js        → loader, menu (hambúrguer + submenus), formulário, vídeos, logos
+assets/
+  icons/   logo.png (original) · logo-web.png (versão leve usada no site)
+           icon.png (original) · icon-192.png (favicon leve)
+  images/  fotos do site (originais mantidos; o site usa as versões otimizadas)
