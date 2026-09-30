@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://murilo23ctrl.github.io/Smart-Repinturas-V2/sitemap.xml

@@ -1,102 +1,123 @@
-SMART REPINTURA — SITE INSTITUCIONAL
-========================================
+SMART REPINTURA — SITE
+======================
 
-COMO ABRIR
-----------
-Abra o arquivo "index.html" no navegador. Para ver exatamente como no ar,
-sirva a pasta com um servidor local (ex.: extensão "Live Server" do VS Code).
-Nenhum framework é usado: HTML5, CSS3 e JavaScript puro.
+COMO O SITE ESTÁ ORGANIZADO
+---------------------------
+index.html ................ Home (ordem: header, hero, diferenciais, produtos,
+                            soluções, conteúdos, marcas, CTA final, rodapé)
+produtos/ ................. /produtos e as 8 categorias (abrasivos, mascaramento,
+                            preparacao, tintas-automotivas, vernizes, polimento,
+                            equipamentos, epi)
+solucoes/, colorimetria/, treinamentos/, suporte-tecnico/, consultoria/,
+cabines-de-pintura/, laboratorios-colorimetria/, conteudos/, sobre/, contato/
+  (as pastas das páginas ficam na raiz porque viram o endereço: site/produtos/, site/contato/...)
+css/style.css ............. todo o visual (escrito a partir do celular)
+css/animations.css ........ entrada discreta dos elementos
+js/ ....................... menu, busca, banners do hero, carrossel de vídeos, formulário
+                            (busca-indice.js é gerado: não edite à mão)
+sitemap.xml, robots.txt ... SEO
 
+assets/
+  icons/ .................. logo do site (logo-web) e ícone da aba (icon-192)
+  images/
+    hero/ ................. os 2 banners do topo (versões computador e celular)
+    produtos/ ............. fotos dos produtos (latas: massas, pu, verniz...)
+    categorias/ ........... foto de cada categoria (ainda não existe: crie ao colocar a 1ª)
+    solucoes/ ............. fotos dos cards de soluções
+    marcas/ ............... logos das marcas (ainda não existe: crie ao colocar o 1º)
 
-SEÇÕES DA PÁGINA (e o link de cada uma)
-----------------------------------------
-  #topo           01 Hero ("Especialistas em Repintura Automotiva")
-  #diferenciais   02 Faixa de diferenciais
-  #produtos       03 Produtos (roda giratória com as 8 categorias)
-  #sobre          04 Soluções Smart ("Muito mais que uma loja de tintas")
-  #servicos       04 cards de serviços (#suporte, #consultoria, #cabines, #laboratorios)
-  #colorimetria   05 Smart Color (processo de cor em 6 etapas)
-  #treinamentos   06 Smart Academy
-  #conteudos      07 Vídeos / dicas técnicas
-  #marcas         08 Marcas que trabalhamos
-  #clientes       09 Prova social (OCULTA até receber conteúdo real — ver abaixo)
-  #contato        Contato (formulário → WhatsApp + mapa)
-  #fale-conosco   10 CTA final
-
-
-FOTOS PENDENTES (é só colocar o arquivo com o nome exato)
-----------------------------------------------------------
-Enquanto o arquivo não existe, o site mostra um ícone ou uma imagem provisória.
-Assim que o arquivo é colocado na pasta, a foto aparece sozinha — sem mexer no código.
-
-  Categorias de produtos — pasta assets/images/produtos/  (JPG, 800 x 600 px)
-    abrasivos.jpg              (hoje: ícone)
-    mascaramento.jpg           (hoje: ícone)
-    preparacao.jpg             (hoje: foto da lata de massa)
-    tintas-automotivas.jpg     (hoje: foto da lata de PU)
-    vernizes-acabamento.jpg    (hoje: foto da lata de verniz)
-    polimento.jpg              (hoje: ícone)
-    pistolas-equipamentos.jpg  (hoje: pistola provisória)
-    epi-seguranca.jpg          (hoje: ícone)
-
-  Smart Color — pasta assets/images/  (JPG, 1000 x 1000 px)
-    colorimetria-espectrofotometro.jpg
-    (ideal: espectrofotômetro sendo usado sobre um veículo)
-
-  Marcas — pasta assets/images/marcas/  (PNG com fundo transparente, ~300 x 120 px)
-    autoluks.png  mirka.png  itaqua.png  adere.png
-    adelbras.png  norton.png  maxi-rubber.png  autoamerica.png
-    (enquanto não existem, aparece o nome da marca)
-
-Dica de desempenho: exporte as fotos já no tamanho indicado e comprimidas
-(ex.: squoosh.app). Se usar .webp, troque também a extensão no index.html.
+Pastas que NÃO são publicadas (o GitHub Pages ignora pastas que começam com "_"):
+_componentes/
+  dados.js ... contatos, WhatsApp, banners, categorias, soluções, vídeos e marcas
+  partes.js .. header, rodapé, busca, cards e CTA (o "desenho" de cada peça)
+  paginas.js . textos das páginas internas
+  gerar.js ... o gerador
+_originais/ ... arquivos que o site não usa, guardados para não perder: artes
+                originais em alta (logo.png, icon.png), os banners do hero com as
+                laterais borradas (*-com-borrado) e imagens antigas (yt-img, ml-img, zapzap-banner...).
 
 
-VÍDEOS DO YOUTUBE (seção Conteúdos)
------------------------------------
-Em cada card de vídeo do index.html, preencha data-video-id="" com o código do vídeo.
-Ex.: em youtube.com/watch?v=AbC123xYz o código é AbC123xYz.
-A capa e o link do vídeo aparecem sozinhos.
+COMO EDITAR
+-----------
+1. Edite o que precisar em _componentes/dados.js (ou paginas.js / partes.js).
+2. Na pasta do site, rode:   node _componentes/gerar.js
+3. Pronto: menu, rodapé, cards e páginas são atualizados em todo o site,
+   e o sitemap.xml e a busca também.
 
-ATENÇÃO: os links do canal ainda apontam para "https://youtube.com" (genérico).
-Troque pelo endereço do canal da Smart (localizar e substituir "https://youtube.com").
+No index.html, só os trechos entre os marcadores COMPONENTE são refeitos pelo
+gerador. O resto do arquivo pode ser editado à mão normalmente.
 
 
-PROVA SOCIAL (#clientes)
-------------------------
-A seção está pronta, mas oculta. Use SOMENTE depoimentos, cases e fotos reais.
-Para ativar: no index.html, apague o atributo  hidden  da <section id="clientes">
-e troque os textos entre [colchetes]. Fotos de antes/depois: assets/images/clientes/
+PENDÊNCIAS (dados que só a Smart pode passar)
+---------------------------------------------
+- Link do canal do YouTube ........ dados.js > contato.youtube
+- Link da página do Facebook ...... dados.js > contato.facebook
+  (enquanto estiver vazio, o ícone não aparece)
+- Vídeos: código e duração ......... dados.js > videos (id e duracao)
+  Ex.: em youtube.com/watch?v=AbC123xYz o código é AbC123xYz.
+  Com o código preenchido, a capa e o link do vídeo aparecem sozinhos.
+
+Webmail: o link do rodapé (ao lado de "Contato") vem de dados.js > contato.webmail.
+  Está em http:// porque o https do domínio ainda dá erro de certificado; quando o SSL
+  estiver certo, troque para https:// e rode o gerador.
+
+Mapinha do rodapé: o Google Maps procura o texto de dados.js > contato.mapaBusca;
+o botão "Como chegar" abre a rota até esse endereço (no celular, no app de mapas).
+
+
+FOTOS (coloque o arquivo com o nome exato e rode o gerador)
+-----------------------------------------------------------
+Hero ............ 2 banners de fundo, trocando sozinhos (6 s cada), com o título
+                  do site por cima (computador: à esquerda · celular: na metade de baixo).
+                  A tag <picture> escolhe a arte certa para cada aparelho.
+                  O hero fica com a MESMA PROPORÇÃO da arte: a imagem aparece inteira,
+                  sem cortes e sem fundo borrado. Tamanhos:
+                    Computador, tela cheia ..... 1920 x 1080 px (16:9)
+                    Computador, faixa .......... 1600 x 500 px ou 1200 x 400 px
+                    Celular .................... 800 x 1200 px ou 1080 x 1920 px (vertical)
+                  Use o mesmo tamanho nos 2 banners (o hero segue o 1º).
+                  Deixe sem texto importante a metade esquerda da arte de computador e a
+                  metade de baixo da de celular: é onde fica o título do site.
+                  Pasta assets/images/hero/:
+                    hero-banner-desktop.png  e  hero-banner2-desktop.jpg ... computador/tablet
+                    hero-banner-mobile.jpg   e  hero-banner2-mobile.jpg .... celular
+                  (Os atuais são as artes originais sem as laterais borradas: 1064 x 600 no
+                  computador. As versões com borrado estão em _originais/.)
+                  Para trocar um banner: substitua o arquivo mantendo o nome e rode o gerador.
+                  Para adicionar um 3º banner ou mudar o tempo: dados.js > heroSlides / heroTempo.
+Categorias ...... assets/images/categorias/<categoria>.jpg  (800 x 600 px)
+                  abrasivos.jpg  mascaramento.jpg  preparacao.jpg
+                  tintas-automotivas.jpg  vernizes.jpg  polimento.jpg
+                  equipamentos.jpg  epi.jpg
+                  (sem foto: aparece o ícone ou a foto da lata que já existe)
+Produtos ........ assets/images/produtos/<arquivo>.jpg (foto de cada produto listado
+                  numa categoria; o nome do arquivo fica em dados.js > categorias > produtos)
+Soluções ........ assets/images/solucoes/<nome>.jpg  (900 x 700 px)
+                  color.jpg  academy.jpg  tech.jpg  consultoria.jpg
+                  cabines.jpg  lab.jpg
+                  (academy e consultoria ainda não têm foto: aparece o ícone)
+CTA final ....... assets/images/cta-traseira.jpg (traseira de carro, lanterna acesa)
+                  (sem foto: aparece um brilho de lanterna feito em CSS)
+Marcas .......... assets/images/marcas/<marca>.png ou .svg (fundo transparente)
+                  autoluks  mirka  itaqua  adere  adelbras  norton
+                  maxi-rubber  autoamerica   (sem logo: aparece o nome)
+
+Se trocar uma foto .jpg que tem versão .webp/.avif ao lado, o site passa a usar
+a .jpg nova automaticamente (o gerador só usa o WebP/AVIF se for mais recente).
+Para gerar WebP você mesmo: https://squoosh.app
 
 
 WHATSAPP
 --------
-Número principal dos botões: (16) 99708-5857  →  5516997085857
-Segundo número (Contato e rodapé): (16) 99785-0858  →  5516997850858
-Para trocar o número principal: localizar e substituir "5516997085857"
-no index.html e no js/script.js.
+Número principal (todos os botões): (16) 9.9785-0858  → 5516997850858
+Para trocar: dados.js > contato.whats e contato.whatsFmt, depois rode o gerador.
+As mensagens já saem identificadas, por exemplo:
+"Olá! Vim pelo site da Smart Repintura e gostaria de atendimento sobre Abrasivos."
 
 
-DADOS PARA CONFERIR
--------------------
-- Horário: "7:30 às 17:18" (veio assim no briefing — confirme se é 17:18 mesmo).
-- Endereço do site: as tags de SEO/compartilhamento usam
-  https://murilo23ctrl.github.io/Smart-Repinturas/ — se mudar para domínio próprio,
-  troque esse endereço no <head> do index.html.
-
-
-ESTRUTURA DE ARQUIVOS
----------------------
-index.html
-css/
-  style.css        → cores, tipografia e todos os componentes
-  responsive.css   → header e ajustes por tamanho de tela
-  animations.css   → entrada suave dos elementos ao rolar
-js/
-  scroll.js        → header ao rolar, animações de entrada, item ativo do menu
-  slider.js        → carrossel do hero, roda de produtos, trilho de vídeos
-  script.js        → loader, menu (hambúrguer + submenus), formulário, vídeos, logos
-assets/
-  icons/   logo.png (original) · logo-web.png (versão leve usada no site)
-           icon.png (original) · icon-192.png (favicon leve)
-  images/  fotos do site (originais mantidos; o site usa as versões otimizadas)
+ENDEREÇO DO SITE (SEO)
+----------------------
+O canonical, o Open Graph e o sitemap usam:
+https://murilo23ctrl.github.io/Smart-Repinturas-V2/
+Se mudar para um domínio próprio: dados.js > SITE_URL, robots.txt e o <head>
+do index.html. Depois rode o gerador.
